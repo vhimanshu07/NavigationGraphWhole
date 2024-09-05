@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.navigationgraphwhole.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_chooseReceiverFragment"
+            app:destination="@id/chooseReceiverFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewTransactionFragment"
+            app:destination="@id/viewTransactionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewBalanceFragment"
+        android:name="com.example.navigationgraphwhole.ViewBalanceFragment"
+        android:label="fragment_view_balance"
+        tools:layout="@layout/fragment_view_balance" />
+    <fragment
+        android:id="@+id/viewTransactionFragment"
+        android:name="com.example.navigationgraphwhole.ViewTransactionFragment"
+        android:label="fragment_view_transaction"
+        tools:layout="@layout/fragment_view_transaction" />
+    <fragment
+        android:id="@+id/chooseReceiverFragment"
+        android:name="com.example.navigationgraphwhole.ChooseReceiverFragment"
+        android:label="Send money - Receiver"
+        tools:layout="@layout/fragment_choose_receiver">
+        <action
+            android:id="@+id/action_chooseReceiverFragment_to_sendCashFragment"
+            app:destination="@id/sendCashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendCashFragment"
+        android:name="com.example.navigationgraphwhole.SendCashFragment"
+        android:label="Send cash - {receiverName}"
+        tools:layout="@layout/fragment_send_cash">
+        <argument
+            android:name="receiverName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_sendCashFragment_to_confirmDialogFragment22"
+            app:destination="@id/confirmDialogFragment2" />
+        <action
+            android:id="@+id/action_sendCashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="www.navigation.com/{receiverName}" />
+    </fragment>
+    <dialog
+        android:id="@+id/confirmDialogFragment2"
+        android:name="com.example.navigationgraphwhole.ConfirmDialogFragment"
+        android:label="fragment_confirm_dialog"
+        tools:layout="@layout/fragment_confirm_dialog">
+        <argument
+            android:name="receiverName"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="long" />
+    </dialog>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.navigationgraphwhole.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.example.navigationgraphwhole.AboutAppFragment"
+        android:label="About this app"
+        tools:layout="@layout/fragment_about_app" />
+    <action
+        android:id="@+id/action_global_aboutAppFragment"
+        app:destination="@id/aboutAppFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.navigationgraphwhole.NotificationsFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>
